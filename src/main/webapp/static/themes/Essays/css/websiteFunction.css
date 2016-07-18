@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+#functionMaps {
+	margin: 0 auto;
+	margin-top: 15px
+}
+
+.websiteFunction {
+	width: 100%;
+	min-height: 50px
+}
+
+.functionnav {
+	width: 14%;
+	display: block;
+	float: left;
+	list-style: none;
+	background: #0F820;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	margin-left: 30px;
+	font-size: 14px;
+	text-align: center
+}
+
+.functionsubnav {
+	width: 77%;
+	display: block;
+	float: left;
+}
+
+.functionsubnav .subnav {
+	display: block;
+	float: left;
+	list-style: none;
+	padding-right: 12px;
+	font-size: .9em
+}
+
+.functionsubnav .subnav a {
+	color: #BC360A;
+	text-decoration: none;
+	font-size: 18px;
+	margin-right: 40px;
+}
+
+.functionsubnav .subnav a:hover {
+	color: #EA9629;
+	text-decoration: underline
+}

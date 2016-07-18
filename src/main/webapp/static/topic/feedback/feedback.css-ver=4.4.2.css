@@ -1,0 +1,38 @@
+.body-ui-feedback article{
+    min-height: 250px;
+}
+.body-ui-feedback .chrg-item.chrg-no-select {
+    background-color: rgb(255, 255, 255);
+    border-left: 1px solid rgb(222, 223, 224);
+    border-right: 1px solid rgb(222, 223, 224);
+    border-bottom: 4px solid RGB(227, 228, 229);
+}
+.body-ui-feedback [class*=" chrgi-"],.body-ui-feedback [class^="chrgi-"] {
+    font-family: uiicon !important;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.chrgi-previous::before {
+    content: "\f053";
+}
+.chrgi-next::before {
+    content: "\f054";
+}
+.chrgi-maximize::before {
+    content: "\f065";
+}
+.chrgi-minimize::before {
+    content: "\f066";
+}
+.chrgi-close::before {
+    content: "\f057";
+}
+
+.chrgi-image::before {
+    content: "\f03e";
+}

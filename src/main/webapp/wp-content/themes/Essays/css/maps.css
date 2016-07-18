@@ -1,0 +1,116 @@
+.plogo {
+	transform-style: preserve-3d;
+	animation: 3s ease-in 4s normal none infinite flipper
+}
+
+.page_t b {
+	font: 28px 微软雅黑,"Microsoft YaHei",sans-serif;
+	text-shadow: 0 1px 1px #FFF;
+	line-height: 48px
+}
+
+.page_t {
+	margin-left: 10px;
+	padding-top: 8px;
+}
+
+.plogo,.page_t {
+	float: left
+}
+
+.vt {
+	color: #000;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 40px;
+	border-left: 8px solid #8FDBC1;
+	margin-left: -8px;
+	height: 70px;
+	width: 300px;
+}
+
+.vt img{
+	
+}
+.v_title {
+	width: 100%;
+	float: left;
+	margin-bottom: 20px
+}
+
+.v_content {
+	width: 100%;
+	float: left;
+	margin-bottom: 20px
+}
+
+.v_content>ul {
+	float: left;
+	margin-bottom: 10px;
+	margin-left: 40px;
+	margin-top: 20px
+}
+
+.v_content>ul>li {
+	min-width: 100px;
+	float: left;
+	font-size: 28px
+}
+
+.v_content>ul>li>i {
+	margin-right: 10px;
+	color: #666
+}
+
+.v_content .h,.v_content .n,.v_content .p {
+	margin-top: 0
+}
+
+#wrap {
+	display: table;
+	width: 1210px;
+	border-radius: 3px;
+	background: none repeat scroll 0 0 #FFF;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+	margin-top: 22px;
+	margin-left: auto;
+	margin-right: auto
+}
+#maps .area>ul>li {
+	font-size: 18px;
+	margin-bottom: 10px;
+	margin-right: 50px;
+}
+#maps .ln-letters {
+    margin-left: 40px;
+}
+#maps .academic>ul>li {
+	font-size: 18px;
+	line-height: 25px;
+	width: 25%;
+	height: 40px;
+	padding-left: 60px;
+	
+}
+#maps .academic>ul>li>a {
+	font-family: "Open Sans",bluehost,"Microsoft YaHei",Arial,sans-serif;
+	font-weight: 800;
+	color: #A3A3A3;
+	font-size: 20px;
+}
+#maps .academic>ul>li>a:hover{
+	color: #ccc;
+}
+.ln-letters a {
+	color: #333;
+	font-family: "Open Sans",bluehost,"Microsoft YaHei",Arial,sans-serif;
+}
+
+.functionnav a{
+	font-size: 18px;
+	color: #a3a3a3;
+}
+.navTitle{
+	font-size: 18px;
+	color: #A3A3A3;
+}

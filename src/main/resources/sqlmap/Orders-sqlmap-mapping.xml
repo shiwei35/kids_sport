@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kids_sport.dao.OrdersDao" >
+  <resultMap id="BaseResultMap" type="com.kids_sport.model.Orders" >
+    <id column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="order_parent_name" property="orderParentName" jdbcType="VARCHAR" />
+    <result column="order_children_name" property="orderChildrenName" jdbcType="VARCHAR" />
+    <result column="order_children_age" property="orderChildrenAge" jdbcType="VARCHAR" />
+    <result column="order_phone_num" property="orderPhoneNum" jdbcType="VARCHAR" />
+    <result column="order_email" property="orderEmail" jdbcType="VARCHAR" />
+    <result column="order_qq" property="orderQq" jdbcType="VARCHAR" />
+    <result column="order_wechat" property="orderWechat" jdbcType="VARCHAR" />
+    <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
+    <result column="order_item" property="orderItem" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_id, order_parent_name, order_children_name, order_children_age, order_phone_num, 
+    order_email, order_qq, order_wechat, order_time, order_item
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from orders
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kids_sport.model.Orders" >
+    insert into orders (order_parent_name, order_children_name, 
+      order_children_age, order_phone_num, order_email, 
+      order_qq, order_wechat, order_time, 
+      order_item)
+    values (#{orderParentName,jdbcType=VARCHAR}, #{orderChildrenName,jdbcType=VARCHAR}, 
+      #{orderChildrenAge,jdbcType=VARCHAR}, #{orderPhoneNum,jdbcType=VARCHAR}, #{orderEmail,jdbcType=VARCHAR}, 
+      #{orderQq,jdbcType=VARCHAR}, #{orderWechat,jdbcType=VARCHAR},NOW(), 
+      #{orderItem,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kids_sport.model.Orders" >
+    insert into orders
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      
+      <if test="orderParentName != null" >
+        order_parent_name,
+      </if>
+      <if test="orderChildrenName != null" >
+        order_children_name,
+      </if>
+      <if test="orderChildrenAge != null" >
+        order_children_age,
+      </if>
+      <if test="orderPhoneNum != null" >
+        order_phone_num,
+      </if>
+      <if test="orderEmail != null" >
+        order_email,
+      </if>
+      <if test="orderQq != null" >
+        order_qq,
+      </if>
+      <if test="orderWechat != null" >
+        order_wechat,
+      </if>
+     
+        order_time,
+     
+      <if test="orderItem != null" >
+        order_item,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    
+      <if test="orderParentName != null" >
+        #{orderParentName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderChildrenName != null" >
+        #{orderChildrenName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderChildrenAge != null" >
+        #{orderChildrenAge,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPhoneNum != null" >
+        #{orderPhoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="orderEmail != null" >
+        #{orderEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="orderQq != null" >
+        #{orderQq,jdbcType=VARCHAR},
+      </if>
+      <if test="orderWechat != null" >
+        #{orderWechat,jdbcType=VARCHAR},
+      </if>
+      NOW(),
+      <if test="orderItem != null" >
+        #{orderItem,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kids_sport.model.Orders" >
+    update orders
+    <set >
+      <if test="orderParentName != null" >
+        order_parent_name = #{orderParentName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderChildrenName != null" >
+        order_children_name = #{orderChildrenName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderChildrenAge != null" >
+        order_children_age = #{orderChildrenAge,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPhoneNum != null" >
+        order_phone_num = #{orderPhoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="orderEmail != null" >
+        order_email = #{orderEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="orderQq != null" >
+        order_qq = #{orderQq,jdbcType=VARCHAR},
+      </if>
+      <if test="orderWechat != null" >
+        order_wechat = #{orderWechat,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null" >
+        order_time = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderItem != null" >
+        order_item = #{orderItem,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kids_sport.model.Orders" >
+    update orders
+    set order_parent_name = #{orderParentName,jdbcType=VARCHAR},
+      order_children_name = #{orderChildrenName,jdbcType=VARCHAR},
+      order_children_age = #{orderChildrenAge,jdbcType=VARCHAR},
+      order_phone_num = #{orderPhoneNum,jdbcType=VARCHAR},
+      order_email = #{orderEmail,jdbcType=VARCHAR},
+      order_qq = #{orderQq,jdbcType=VARCHAR},
+      order_wechat = #{orderWechat,jdbcType=VARCHAR},
+      order_time = #{orderTime,jdbcType=TIMESTAMP},
+      order_item = #{orderItem,jdbcType=VARCHAR}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+</mapper>

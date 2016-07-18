@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kids_sport.dao.NewsDao">
+	<resultMap id="BaseResultMap" type="com.kids_sport.model.News">
+		<id column="NEWID" property="newid" jdbcType="INTEGER" />
+		<result column="TITLE" property="title" jdbcType="VARCHAR" />
+		<result column="PUBDATE" property="pubdate" jdbcType="DATE"/>
+		<result column="VFLAG" property="vflag" jdbcType="VARCHAR" />
+		<result column="PICTURE" property="picture" jdbcType="VARCHAR" />
+		<result column="TIPS" property="tips" jdbcType="VARCHAR" />
+		<result column="OUTLINE" property="outline" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="ResultMapWithNews" type="com.kids_sport.model.News"
+		extends="BaseResultMap">
+		<result column="CONTENT" property="content" jdbcType="LONGVARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		NEWID, TITLE, DATE_FORMAT(PUBDATE,'%Y-%m-%d %H:%i:%S') PUBDATE , VFLAG, PICTURE, TIPS,OUTLINE
+	</sql>
+	<sql id="Blob_Column_List">
+		CONTENT
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithNews"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from new
+		where NEWID = #{newid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from new
+		where NEWID = #{newid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.kids_sport.model.News">
+		insert into new (NEWID, TITLE, PUBDATE,
+		VFLAG, PICTURE, TIPS, CONTENT,OUTLINE
+		)
+		values (#{newid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},
+		#{pubdate,jdbcType=TIMESTAMP},
+		#{vflag,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, #{tips,jdbcType=VARCHAR},
+		#{content,jdbcType=LONGVARCHAR}, #{outline,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.kids_sport.model.News">
+		insert into new
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="newid != null">
+				NEWID,
+			</if>
+			<if test="title != null">
+				TITLE,
+			</if>
+			<if test="pubdate != null">
+				PUBDATE,
+			</if>
+			<if test="vflag != null">
+				VFLAG,
+			</if>
+			<if test="picture != null">
+				PICTURE,
+			</if>
+			<if test="tips != null">
+				TIPS,
+			</if>
+			<if test="content != null">
+				CONTENT,
+			</if>
+			<if test="outline != null">
+				OUTLINE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="newid != null">
+				#{newid,jdbcType=INTEGER},
+			</if>
+			<if test="title != null">
+				#{title,jdbcType=VARCHAR},
+			</if>
+			<if test="pubdate != null">
+				#{pubdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="vflag != null">
+				#{vflag,jdbcType=VARCHAR},
+			</if>
+			<if test="picture != null">
+				#{picture,jdbcType=VARCHAR},
+			</if>
+			<if test="tips != null">
+				#{tips,jdbcType=VARCHAR},
+			</if>
+			<if test="content != null">
+				#{content,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="outline != null">
+				#{outline,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.kids_sport.model.News">
+		update new
+		<set>
+			<if test="title != null">
+				TITLE = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="pubdate != null">
+				PUBDATE = #{pubdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="vflag != null">
+				VFLAG = #{vflag,jdbcType=VARCHAR},
+			</if>
+			<if test="picture != null">
+				PICTURE = #{picture,jdbcType=VARCHAR},
+			</if>
+			<if test="tips != null">
+				TIPS = #{tips,jdbcType=VARCHAR},
+			</if>
+			<if test="content != null">
+				CONTENT = #{content,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="outline != null">
+				OUTLINE = #{outline,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where NEWID = #{newid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kids_sport.model.News">
+		update new
+		set TITLE = #{title,jdbcType=VARCHAR},
+		PUBDATE = #{pubdate,jdbcType=TIMESTAMP},
+		VFLAG = #{vflag,jdbcType=VARCHAR},
+		PICTURE = #{picture,jdbcType=VARCHAR},
+		TIPS = #{tips,jdbcType=VARCHAR},
+		CONTENT = #{content,jdbcType=LONGVARCHAR},
+		OUTLINE = #{outline,jdbcType=VARCHAR}
+		where NEWID = #{newid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.kids_sport.model.News">
+		update new
+		set TITLE = #{title,jdbcType=VARCHAR},
+		PUBDATE = #{pubdate,jdbcType=TIMESTAMP},
+		VFLAG = #{vflag,jdbcType=VARCHAR},
+		PICTURE = #{picture,jdbcType=VARCHAR},
+		TIPS = #{tips,jdbcType=VARCHAR},
+		OUTLINE = #{outline,jdbcType=VARCHAR}
+		where NEWID = #{newid,jdbcType=INTEGER}
+	</update>
+	<select id="queryNewsList" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+		SELECT *
+		FROM new
+		WHERE 1 = 1
+		ORDER BY NEWID DESC
+	</select>
+	<select id="hotEssayList" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+		SELECT *
+		FROM new
+		WHERE VFLAG = #{vflag,jdbcType=VARCHAR} 
+		ORDER BY NEWID DESC LIMIT 5
+	</select>
+</mapper>
